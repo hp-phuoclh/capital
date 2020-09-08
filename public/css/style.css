@@ -1,0 +1,250 @@
+.header-background {
+    background-color: #000 !important;
+}
+
+.layout-navbar-fixed.layout-fixed .wrapper .sidebar {
+    margin-top: 0px;
+}
+
+.layout-fixed .control-sidebar {
+    height: 159px !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.control-sidebar, .control-sidebar::before {
+    bottom: unset;
+}
+
+.auth-page {
+    min-height: calc(100vh - 57px - 57px);
+    align-items: center;
+}
+
+.content-wrapper>.content {
+    padding-bottom: 40px;
+}
+
+.brand-link .brand-image {
+    width: 44px;
+    padding: 3px;
+}
+
+.table td, .table th {
+    max-width: 200px;
+}
+
+.backdrop-up-modal {
+    z-index: 1051;
+}
+
+.form-inline {
+    white-space: nowrap;
+}
+
+.card-header {
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* approval status */
+
+.approval-editor {
+    position: fixed;
+    z-index: 600;
+    right: 0;
+    bottom: 0;
+    width: calc(100% - 250px);
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .3);
+}
+
+.hide {
+    display: none !important;
+}
+
+.box-log {
+    width: 100%;
+    max-height: 200px;
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.log-items {
+    width: 100%;
+    height: 35px;
+    position: relative;
+    border-bottom: 1px solid;
+}
+
+.log-items>span {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.approval-lists .card-body.p-0 .table tbody>tr>td:last-of-type, .approval-lists .card-body.p-0 .table tbody>tr>th:last-of-type, .approval-lists .card-body.p-0 .table thead>tr>td:last-of-type, .approval-lists .card-body.p-0 .table thead>tr>th:last-of-type {
+    padding-right: 2px;
+}
+
+.approval-editor-space {
+    height: 48px;
+}
+
+.white-space {
+    white-space: pre-line;
+    word-break: break-word;
+}
+.n-header {
+    font-size: 1rem;
+    padding-bottom: 2px;
+}
+.n-read-all {
+    padding-right: 1rem;
+    display: block;
+    text-align: right;
+    clear: both;
+    font-size: .875rem;
+    padding-bottom: 5px;
+}
+[data-notifications-body] {
+    height: 500px;
+    overflow-y: auto;
+}
+
+[data-notifications-body] .dropdown-item .n-content{
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    max-height: 2.67em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.accent-olive [data-notifications-body] a {
+    color: #212529
+}
+
+.accent-olive [data-notifications-body] a.n-unread {
+    background-color: #edf2fa;
+}
+
+.accent-olive [data-notifications-body] a.n-new {
+    background-color: #ffc10769;
+}
+
+.fa-custom-orderCreate:before {
+    content: "\f570";
+    color: #dc3545;
+}
+
+@media (max-width: 580px) {
+    .navbar-expand .navbar-nav [data-notifications-menu] .dropdown-menu-xl {
+        width: 100vw;
+        position: fixed;
+        top: 58px;
+        left: 0px;
+        min-width: unset;
+    }
+}
+
+label.error {
+    color: #dc3545!important;
+    font-weight: normal!important;
+}
+
+/* common img */
+.img-fit {
+    object-fit: cover;
+}
+
+.img-fit.img-fit-sm {
+    width: 60px;
+    height: 40px;
+}
+
+.img-fit.img-fit-md {
+    width: 300px;
+    height: 200px;
+}
+
+.img-fit.img-fit-lg {
+    width: 600px;
+    height: 400px;
+}
+
+/* select 2 search product */
+.select2-results__option[aria-selected=true] {
+    display: none;
+}
+
+.select2-results__option .select2-result-repository {
+    display: flex;
+}
+
+.select2-results__option .select2-result-repository .select2-result-repository__title {
+    word-wrap: break-word;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.select2-results__option .select2-result-repository .select2-result-repository__price {
+    text-decoration: line-through;
+}
+
+.select2-results__option .select2-result-repository .select2-result-repository__price_sale{
+    color: red;
+}
+
+.select2-results__option .select2-result-repository .image-product-search {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.select2-results__option--highlighted .select2-result-repository__title {
+    color: #ffffff!important;
+}
+
+.select2-results__option--highlighted .select2-result-repository__price {
+    color: #ffffff!important;
+}
+
+.select2-results__option--highlighted .select2-result-repository__price_sale {
+    color: #ffffff!important;
+}
+
+#order_amount {
+    font-size: 24px;
+    color: red;
+}
+
+#order_total {
+    font-size: 24px;
+}
+
+.row-error{
+    background-color: #f9000059!important
+}
+
+.text-2line {
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    max-height: 2.67em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-format{
+    min-width: 110px;
+}
+
+/* toats */
+.toasts-top-right {
+    top: 10px;
+    right: 10px;
+    min-width: 300px;
+}

@@ -1,0 +1,6 @@
+{
+    "_comment_": "==================TO APP===============================",
+    "notify new order user": "Your :order_code order has been successfully placed. Please pick up within :shipping_time minutes. Thank you!",
+    "notify new order admin": "Please process the order :order_code!, customers will pick up goods within :shipping_time minutes."
+
+}

@@ -1,0 +1,890 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API documentation",
+        "description": "API Documentation",
+        "termsOfService": "",
+        "contact": {
+            "email": "ntam444@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/admin/details": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get info of admin",
+                "description": "",
+                "operationId": "details",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "user": "{object}"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/check_phone": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Check phone has exist in system",
+                "description": "",
+                "operationId": "check_phone",
+                "parameters": [
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "The phone of user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "login or register",
+                                    "code": "666666"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Invalid phone supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logs user into the system",
+                "description": "",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "The user name for login(email or phone)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "The code for login",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "registration_id",
+                        "in": "query",
+                        "description": "The registration_id of user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "422": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "register user",
+                "description": "register user into system",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "The name user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "The phone of user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "The email of user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "birthday",
+                        "in": "query",
+                        "description": "The birthday of user",
+                        "schema": {
+                            "type": "date",
+                            "format": "dd/mm/YYYY"
+                        }
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "The birthday of user",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "registration_id",
+                        "in": "query",
+                        "description": "The registration_id of user",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "The code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "422": {
+                        "description": "Invalid Parameters supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logs out current logged in user session",
+                "description": "",
+                "operationId": "logout",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "message": "Successfully logged out"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/admin/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logs admin into the system",
+                "description": "",
+                "operationId": "admin_login",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "The admin name for login(email or phone)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "The password for login",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "password"
+                        }
+                    },
+                    {
+                        "name": "registration_id",
+                        "in": "query",
+                        "description": "The registration_id of admin",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "422": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get list category",
+                "description": "",
+                "operationId": "categories",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "categories": "array({object})"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get category",
+                "description": "",
+                "operationId": "category",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "the category id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "category": "{object}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get list order",
+                "description": "",
+                "operationId": "listOrders",
+                "parameters": [
+                    {
+                        "parameter": "code",
+                        "name": "code",
+                        "in": "query",
+                        "description": "the code search",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "X2X4X6"
+                    },
+                    {
+                        "parameter": "price_min",
+                        "name": "price_min",
+                        "in": "query",
+                        "description": "the price min",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "5000"
+                    },
+                    {
+                        "parameter": "price_max",
+                        "name": "price_max",
+                        "in": "query",
+                        "description": "the price min",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "10000"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "orders": "array({object})"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "store order",
+                "description": "",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "parameter": "X-localization",
+                        "name": "X-localization",
+                        "in": "header",
+                        "description": "localization",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "en"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "phone": "0987654321",
+                                    "address": "The Extremes of Good and Evil",
+                                    "full_name": "Oly val",
+                                    "store_id": "",
+                                    "shipping_time": "20",
+                                    "note": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic",
+                                    "details": [
+                                        {
+                                            "quantity": 1,
+                                            "product_id": 1
+                                        },
+                                        {
+                                            "quantity": 2,
+                                            "product_id": 8,
+                                            "size": "M"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "order": "{object}"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "validate fails."
+                    },
+                    "401": {
+                        "description": "unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get order",
+                "description": "",
+                "operationId": "order",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "the order id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "order": "{object}"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get list product",
+                "description": "",
+                "operationId": "products",
+                "parameters": [
+                    {
+                        "parameter": "search_keyword",
+                        "name": "search_keyword",
+                        "in": "query",
+                        "description": "the key word search",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "sư"
+                    },
+                    {
+                        "parameter": "category_id",
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "the category id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    },
+                    {
+                        "parameter": "store_id",
+                        "name": "store_id",
+                        "in": "query",
+                        "description": "the store id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "products": "array({object})"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get product",
+                "description": "",
+                "operationId": "product",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "the product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "product": "{object}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/sliders": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get list slider",
+                "description": "",
+                "operationId": "sliders",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "sliders": "array({object})"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/stores": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Get list store",
+                "description": "",
+                "operationId": "stores",
+                "parameters": [
+                    {
+                        "parameter": "lat",
+                        "name": "lat",
+                        "in": "query",
+                        "description": "the store lat",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "10.854707"
+                    },
+                    {
+                        "parameter": "long",
+                        "name": "long",
+                        "in": "query",
+                        "description": "the store long",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "106.628690"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "stores": "array({object})"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/stores/{id}": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Get store",
+                "description": "",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "parameter": "id",
+                        "name": "id",
+                        "in": "path",
+                        "description": "the store id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "store": "{object}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/account/details": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get info of user",
+                "description": "",
+                "operationId": "details",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "user": "{object}"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/account/update": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user",
+                "description": "",
+                "operationId": "update",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "name": "my name",
+                                    "email": "my-email@e-mail.com",
+                                    "birthday": "dd/mm/yyyy",
+                                    "gender": "1 or 2 -- 1: Female, 2: Male"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "code": "",
+                                    "message": "",
+                                    "error": "",
+                                    "user": "{object}"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "validate fails."
+                    },
+                    "401": {
+                        "description": "unauthenticated."
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth for client"
+        },
+        {
+            "name": "User",
+            "description": "Client of system"
+        },
+        {
+            "name": "Category",
+            "description": "Category of product"
+        },
+        {
+            "name": "Product",
+            "description": "Product of system"
+        },
+        {
+            "name": "Order",
+            "description": "Order of system"
+        },
+        {
+            "name": "Slider",
+            "description": "Slider top of system"
+        },
+        {
+            "name": "Store",
+            "description": "Store of system"
+        }
+    ]
+}
